@@ -553,7 +553,8 @@ var _https_map = {
   },
   'proxy': {
     'any': [
-      /^[^/]*\.video\.qq\.com\//i
+      /^[^/]*\.video\.qq\.com\//i,
+      /^[^/]*\.tianyancha\.com/i,
     ],
     'dmd-fifajs-h5-ikuweb.youku.com': [
       /^\//i
@@ -641,7 +642,6 @@ var _https_map = {
     ]
   }
 };
-var _proxy_str = 'HTTPS secure.uku.im:8443; HTTPS secure.uku.im:993; DIRECT;';
 
 function _check_regex_list(regex_list, str) {
   if (str.slice(0, 4) === ':80/')
@@ -662,6 +662,8 @@ function _check_patterns(patterns, hostname, full_url, prot_len) {
     return true;
   return false;
 }
+
+var _proxy_str = "SOCKS5 127.0.0.1:1086; SOCKS 127.0.0.1:1086; DIRECT;";
 
 function _find_proxy(url_map, host, url, prot_len) {
   if (_check_patterns(url_map.white, host, url, prot_len))
